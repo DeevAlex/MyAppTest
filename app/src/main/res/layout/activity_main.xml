@@ -89,12 +89,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoUsuarioSenha" />
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnEntrarComGoogle"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEntrar" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/ainda_nao_possu_conta"
+        android:layout_marginTop="92dp"
+        android:text="@string/ainda_nao_possui_conta"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/txtLinkRegistrar"
         app:layout_constraintHorizontal_bias="1.0"
@@ -110,7 +119,7 @@
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.749"
+        app:layout_constraintHorizontal_bias="0.747"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

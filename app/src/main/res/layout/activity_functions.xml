@@ -2,88 +2,174 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D9F4FF"
-    tools:context=".MainActivity">
+    tools:context=".FunctionsActivity">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="210dp"
+        android:layout_height="219dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_removebg_preview__3_" />
+
+    <TextView
+        android:id="@+id/txtVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="@string/version_1_0_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider14"
+        app:layout_constraintVertical_bias="0.928" />
+
+    <!-- Botões do menu com imagens -->
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:text="Logo"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:text="MENU WMS"
+        android:textColorLink="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <Button
+        android:id="@+id/btnAbastecer"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#BA5A5A"
+        android:drawableLeft="@drawable/entrega_rapida"
+        android:drawableTint="#F2F2F2"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:padding="10dp"
+        android:text="ABASTECER"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="AMAZEN"
-        android:textSize="38sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Tudo em um lugar só"
+    <Button
+        android:id="@+id/btnInventario"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#C17760"
+        android:drawableLeft="@drawable/lista_de_controle"
+        android:drawablePadding="10dp"
+        android:drawableTint="#F2F2F2"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:padding="10dp"
+        android:text="INVENTÁRIO"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@id/btnTransferir" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="352dp"
-        android:text="Sobre a Empresa"
+        android:id="@+id/btnSobre"
+        android:layout_width="210dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#A2A2A2"
+        android:drawableLeft="@drawable/informacoes"
+        android:drawablePadding="10dp"
+        android:drawableTint="#F2F2F2"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:outlineAmbientShadowColor="#B6B6B6"
+        android:padding="10dp"
+        android:shadowColor="#646060"
+        android:text="SOBRE"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/btnInventario" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="WMS"
-        android:textSize="20sp"
+    <View
+        android:id="@+id/divider14"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="32dp"
+        android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSobre" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Controle seu estoque aqui"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.717"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="35dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="72dp"
+    <Button
+        android:id="@+id/btnTransferir"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#6673CA"
+        android:drawableLeft="@drawable/transferir__1_"
+        android:drawablePadding="10dp"
+        android:drawableTint="#F2F2F2"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:padding="10dp"
+        android:text="TRANSFERIR"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:srcCompat="@drawable/pngwing_com" />
+        app:layout_constraintTop_toBottomOf="@id/btnRetirar" />
+
+    <Button
+        android:id="@+id/btnRetirar"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#5EBA5E"
+        android:drawableLeft="@drawable/leve_embora"
+        android:drawablePadding="10dp"
+        android:drawableTint="#F2F2F2"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:padding="10dp"
+        android:text="RETIRAR"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FA2020"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAbastecer" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

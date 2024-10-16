@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">MyAppTest</string>
-    <string name="oauth_android">1056589968910–5pkb4hc9l6lt8qtsqq7btsbdic90d4h4.apps.googleusercontent.com</string>
-    <string name="oauth_web">832214650158-cknoutdu6akbgtjbg4lm2jpvlrgla7cc.apps.googleusercontent.com</string>
-    <string name="ainda_nao_possu_conta">Ainda não possuí conta?</string>
+    <string name="app_name">AMAZEN</string>
+    <string name="oauth_android"></string>
+    <string name="oauth_web"></string>
+    <string name="ainda_nao_possui_conta">Ainda não possuí conta?</string>
+    <string name="inventario">INVENTÁRIO</string>
+    <string name="emailEnviador" translatable="true"></string>
+    <string name="senhaEnviador">""</string>
+    <string name="version_1_0_0">"Versão 1.0.1"</string>
 </resources>

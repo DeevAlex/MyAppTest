@@ -2,6 +2,7 @@ package com.example.myapptest;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -27,16 +28,9 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText emailCadastro;
-    private EditText senhaCadastro;
-    private EditText repitirSenhaCadastro;
+    private EditText emailCadastro, senhaCadastro, repitirSenhaCadastro;
 
-    private TextView txtPasso1;
-    private TextView txtPasso2;
-    private TextView txtPasso3;
-    private TextView txtPasso4;
-    private TextView txtPasso5;
-    private TextView txtPasso6;
+    private TextView txtPasso1, txtPasso2, txtPasso3, txtPasso4, txtPasso5;
 
     private ProgressBar progressStatus;
 
@@ -44,13 +38,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     private TextView txtLinkEntrar;
 
-    private boolean temMinuscula, temMaiuscula, temNumerico, temEspecial, contemOitoCaracteres, senhasIguais;
+    private boolean temMinuscula, temMaiuscula, temNumerico, temEspecial, contemOitoCaracteres;
 
-    int successColor;
-    int failColor;
-    int colorPrimaryText;
+    int successColor, failColor, colorPrimaryText, warnColor;
 
-    private DatabaseHelper dbHelper;
+    private DatabaseUsuarios dbUsuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
 
-        dbHelper = new DatabaseHelper(this);
+        dbUsuarios = new DatabaseUsuarios(this);
 
         emailCadastro = findViewById(R.id.emailCadastro);
         senhaCadastro = findViewById(R.id.senhaCadastro);
@@ -69,7 +61,6 @@ public class RegisterActivity extends AppCompatActivity {
         txtPasso3 = findViewById(R.id.txtPasso3);
         txtPasso4 = findViewById(R.id.txtPasso4);
         txtPasso5 = findViewById(R.id.txtPasso5);
-        txtPasso6 = findViewById(R.id.txtPasso6);
         txtLinkEntrar = findViewById(R.id.txtLinkEntrar);
 
         progressStatus = findViewById(R.id.progressStatus);
@@ -78,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegistrar = findViewById(R.id.btnRegistrar);
 
         successColor = getResources().getColor(R.color.success);
+        warnColor = getResources().getColor(R.color.warn);
         failColor = getResources().getColor(R.color.fail);
 
         TypedArray typedArray = getTheme().obtainStyledAttributes(new int[] { android.R.attr.textColorPrimary });
@@ -104,41 +96,9 @@ public class RegisterActivity extends AppCompatActivity {
                     resetValidationColors();
                     progressStatus.setProgress(0);
                     return;
-                } else {
-                    txtPasso6.setTextColor(failColor);
                 }
 
-                checkValidacoes(senha, repitirSenha);
-                updateProgress();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {}
-        });
-
-
-        repitirSenhaCadastro.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String senhaRepetida = repitirSenhaCadastro.getText().toString();
-                String senhaOriginal = senhaCadastro.getText().toString();
-
-                if (senhaRepetida.isEmpty()) {
-                    txtPasso6.setTextColor(colorPrimaryText);
-                    return;
-                }
-
-                if (senhaRepetida.equals(senhaOriginal)) {
-                    txtPasso6.setTextColor(successColor);
-                    senhasIguais = true;
-                } else {
-                    txtPasso6.setTextColor(failColor);
-                    senhasIguais = false;
-                }
-
+                checkValidacoes(senha);
                 updateProgress();
             }
 
@@ -166,6 +126,11 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (!senha.equals(reSenha)) {
+                    Toast.makeText(RegisterActivity.this, "As senhas não são iguais!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 for (Usuario u : loadUsers()) {
                     if (u.getEmail().equals(email)) {
                         Toast.makeText(RegisterActivity.this, "Já existe um usuario registrado com esse email", Toast.LENGTH_SHORT).show();
@@ -173,9 +138,9 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 }
 
-                if (email.matches(emailRegex) && contemOitoCaracteres && senhasIguais && temEspecial && temMaiuscula && temMinuscula && temNumerico) {
+                if (email.matches(emailRegex) && contemOitoCaracteres && temEspecial && temMaiuscula && temMinuscula && temNumerico) {
 
-                    dbHelper.addUser(email, senha);
+                    dbUsuarios.addUser(email, senha, false);
 
                     emailCadastro.setText("");
                     senhaCadastro.setText("");
@@ -196,11 +161,19 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private List<Usuario> loadUsers() {
-        return dbHelper.getAllUsers();
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
     }
 
-    private void checkValidacoes(String senha, String repetirSenha) {
+    private List<Usuario> loadUsers() {
+        return dbUsuarios.getAllUsers();
+    }
+
+    private void checkValidacoes(String senha) {
+
         String regexCaractereEspecial = ".*[!@#$%^&*()\\-_=+{}\\[\\]:;\"'<>,.?/\\\\|].*";
         String regexCaractereMaiusculo = ".*[A-Z].*";
         String regexCaractereMinusculo = ".*[a-z].*";
@@ -221,27 +194,37 @@ public class RegisterActivity extends AppCompatActivity {
         contemOitoCaracteres = (senha.length() >= 8 && senha.length() <= 16);
         txtPasso5.setTextColor(contemOitoCaracteres ? successColor : failColor);
 
-        senhasIguais = repetirSenha.equals(senha);
-        txtPasso6.setTextColor(senhasIguais ? successColor : failColor);
     }
 
     private void resetValidationColors() {
-        TextView[] steps = {txtPasso1, txtPasso2, txtPasso3, txtPasso4, txtPasso5, txtPasso6};
-        for (TextView step : steps) {
-            step.setTextColor(colorPrimaryText);
+        TextView[] passos = {txtPasso1, txtPasso2, txtPasso3, txtPasso4, txtPasso5};
+        for (TextView passo : passos) {
+            passo.setTextColor(colorPrimaryText);
         }
     }
 
     private void updateProgress() {
         double progress = 0;
 
-        if (temEspecial) progress += 16.68;
-        if (temNumerico) progress += 16.68;
-        if (temMaiuscula) progress += 16.68;
-        if (temMinuscula) progress += 16.68;
-        if (contemOitoCaracteres) progress += 16.68;
-        if (senhasIguais) progress += 16.68;
+        if (temEspecial) progress += 20;
+        if (temNumerico) progress += 20;
+        if (temMaiuscula) progress += 20;
+        if (temMinuscula) progress += 20;
+        if (contemOitoCaracteres) progress += 20;
 
         progressStatus.setProgress((int) Math.max(0, Math.min(progress, 100)));
+
+        int transparentColor = Color.parseColor("#00FFFFFF");
+
+        if (progress <= 0) {
+            progressStatus.setProgressTintList(ColorStateList.valueOf(transparentColor));
+        } else if (progress >= 20 && progress <= 49) {
+            progressStatus.setProgressTintList(ColorStateList.valueOf(failColor));
+        } else if (progress >= 50 && progress <= 99) {
+            progressStatus.setProgressTintList(ColorStateList.valueOf(warnColor));
+        } else if (progress == 100) {
+            progressStatus.setProgressTintList(ColorStateList.valueOf(successColor));
+        }
+
     }
 }

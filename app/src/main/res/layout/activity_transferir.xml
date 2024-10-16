@@ -2,9 +2,180 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TransferirActivity">
+    tools:context=".TransferirActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-12dp">
+
+    <!-- Logo e título do app -->
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="210dp"
+        android:layout_height="219dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_removebg_preview__3_" />
+
+    <TextView
+        android:id="@+id/txtVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Version 1.0.1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+    <View
+        android:id="@+id/divider7"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="52dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTransferenciaTranferir" />
+
+    <EditText
+        android:id="@+id/txtIDTransferir"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#6673CA"
+        android:ems="10"
+        android:hint="ID do Item"
+        android:inputType="text"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewTela" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="65dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:text="Saída"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView15"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuantidadeTransferir" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="96dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:text="Entrada"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuantidadeTransferir" />
+
+    <EditText
+        android:id="@+id/txtIDCentroSaida"
+        android:layout_width="130dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#6673CA"
+        android:ems="10"
+        android:hint="ID do CD"
+        android:inputType="text"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/txtIDCentroEntrada"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <EditText
+        android:id="@+id/txtIDCentroEntrada"
+        android:layout_width="130dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#6673CA"
+        android:ems="10"
+        android:hint="ID do CD"
+        android:inputType="text"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <EditText
+        android:id="@+id/txtQuantidadeTransferir"
+        android:layout_width="120dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#6673CA"
+        android:ems="10"
+        android:hint="Quantidade"
+        android:inputType="text"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtIDTransferir" />
+
+    <Button
+        android:id="@+id/btnTransferenciaTranferir"
+        android:layout_width="300dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#6673CA"
+        android:drawableLeft="@drawable/transferir__1_"
+        android:drawablePadding="100dp"
+        android:drawableTint="#FFFFFF"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:padding="10dp"
+        android:text="TRANSFERIR"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtIDCentroEntrada" />
+
+    <TextView
+        android:id="@+id/txtViewTela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:text="TRANSFÊRENCIA"
+        android:textAlignment="center"
+        android:textColorLink="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+    <!-- Botões do menu com imagens -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

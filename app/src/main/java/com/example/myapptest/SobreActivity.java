@@ -1,5 +1,6 @@
 package com.example.myapptest;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -16,5 +17,12 @@ public class SobreActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sobre);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(SobreActivity.this, FunctionsActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

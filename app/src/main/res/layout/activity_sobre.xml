@@ -2,9 +2,112 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SobreActivity">
+    tools:context=".SobreActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="13dp">
+
+    <!-- Logo e título do app -->
+
+    <TextView
+        android:id="@+id/txtVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="@string/version_1_0_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider12"
+        app:layout_constraintVertical_bias="0.979" />
+
+    <TextView
+        android:id="@+id/txtViewTela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:text="QUEM É A AMAZEN?"
+        android:textAlignment="center"
+        android:textColorLink="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/divider2" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="323dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="12dp"
+        android:text="    O primeiro produto da empresa, o AMAZEN WMS, é um aplicativo voltado para o controle de estoques, permitindo que empresas monitorem suas operações em tempo real, automatizem processos e otimizem a gestão de seus recursos. Em pouco tempo, o app ganhou destaque no mercado, tornando a AMAZEM uma referência em soluções empresariais."
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="323dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="12dp"
+        android:text="    Com foco em inovação e facilidade de uso, a AMAZEM segue expandindo suas soluções para atender cada vez mais empresas e setores, sempre com o compromisso de transformar processos complexos em algo simples e eficaz."
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+    <View
+        android:id="@+id/divider12"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="52dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="323dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="24dp"
+        android:text="    Fundada em 2024 por Álex Caceres, Gabriel Morato e Lívia Fernandes, a AMAZEM é uma empresa de tecnologia que nasceu com a missão de criar soluções digitais para diferentes setores. O nome AMAZEM reflete seu objetivo de ser um verdadeiro armazém de ferramentas tecnológicas, com o slogan &quot;Tudo em um só lugar&quot;, reforçando a ideia de simplificação e eficiência."
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewTela" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="210dp"
+        android:layout_height="219dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_removebg_preview__3_" />
+
+
+    <!-- Botões do menu com imagens -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
